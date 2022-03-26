@@ -23,7 +23,7 @@ class SecondaryMainFragment : Fragment() {
         // INFO: This is where you would add more code, if you need it to be run on Page Initialisation
 
         // INFO: Sets the action for clicking the button. This is done with a Lambda Expression
-        binding!!.navigateToSubPage.setOnClickListener { view: View? ->
+        binding!!.navigateToSubPage.setOnClickListener {
             // INFO: First we create a Bundle, which will be used for transferring Data from this Fragment, into the next Fragment
             val dataTransferBundle = Bundle()
             val valueFromEditableTextField = binding!!.numberField.text.toString()

@@ -13,7 +13,7 @@ import com.github.anonisnap.fragmentviewdemo.databinding.FragmentMainPrimaryBind
 class PrimaryMainFragment : Fragment() {
     private var binding: FragmentMainPrimaryBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val viewModel = ViewModelProvider(this).get(PrimaryViewModel::class.java)
+        val viewModel = ViewModelProvider(this)[PrimaryViewModel::class.java]
         binding = FragmentMainPrimaryBinding.inflate(inflater, container, false)
         val root: View = binding!!.root
         val textView = binding!!.textHeaderPrimary
@@ -23,7 +23,7 @@ class PrimaryMainFragment : Fragment() {
         // INFO: This is where you would add more code, if you need it to be run on Page Initialisation
 
         // INFO: Binds the Button's "OnClick" to the Lambda Expression for navigating to the Sub Page
-        binding!!.navigateToSubPage.setOnClickListener { view: View? -> NavHostFragment.findNavController(this).navigate(R.id.action_nav_main_page_to_nav_sub_page) }
+        binding!!.navigateToSubPage.setOnClickListener { NavHostFragment.findNavController(this).navigate(R.id.action_nav_main_page_to_nav_sub_page) }
 
         // ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~
         return root
