@@ -1,0 +1,15 @@
+<resources>
+	<string name = "app_name">Fragment View Demo</string>
+	<string name = "navigation_drawer_open">Open navigation drawer</string>
+	<string name = "navigation_drawer_close">Close navigation drawer</string>
+	<string name = "nav_header_title">Find all the Fragments</string>
+	<string name = "nav_header_subtitle">There are 4 fragments in total</string>
+	<string name = "nav_header_desc">Navigation header</string>
+	<string name = "action_settings">Settings</string>
+
+	<string name = "menu_primary">Primary Page</string>
+	<string name = "menu_secondary">Secondary Page</string>
+	<string name = "menu_sub_one">Sub Page 1</string>
+	<string name = "menu_sub_two">Sub Page 2</string>
+	<string name = "navigate_to_sub_page">Navigate to Sub Page</string>
+</resources>

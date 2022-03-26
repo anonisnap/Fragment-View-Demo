@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android = "http://schemas.android.com/apk/res/android"
+	  xmlns:tools = "http://schemas.android.com/tools"
+	  tools:showIn = "navigation_view">
+
+	<group android:checkableBehavior = "single">
+		<item
+				android:id = "@+id/nav_main_page"
+				android:icon = "@drawable/ic_menu_camera"
+				android:title = "@string/menu_primary" />
+		<item
+				android:id = "@+id/nav_secondary_page"
+				android:icon = "@drawable/ic_menu_gallery"
+				android:title = "@string/menu_secondary" />
+
+		<!-- Hiding these from the Navigation Drawer, so one has to use the Buttons to access them -->
+	<!--
+		<item
+				android:id = "@+id/nav_sub_page_one"
+				android:icon = "@drawable/ic_menu_slideshow"
+				android:title = "@string/menu_sub_one" />
+		<item
+				android:id = "@+id/nav_sub_page_two"
+				android:icon = "@drawable/ic_menu_slideshow"
+				android:title = "@string/menu_sub_two" />
+	-->
+	</group>
+</menu>

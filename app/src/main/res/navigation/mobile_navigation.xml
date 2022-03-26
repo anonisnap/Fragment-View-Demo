@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android = "http://schemas.android.com/apk/res/android"
+			xmlns:app = "http://schemas.android.com/apk/res-auto"
+			xmlns:tools = "http://schemas.android.com/tools"
+			android:id = "@+id/mobile_navigation"
+			app:startDestination = "@+id/nav_main_page">
+
+	<fragment
+			android:id = "@+id/nav_main_page"
+			android:name = "com.github.anonisnap.fragmentviewdemo.ui.page_one.PrimaryMainFragment"
+			android:label = "@string/menu_primary"
+			tools:layout = "@layout/fragment_main_primary">
+		<action
+				android:id = "@+id/action_nav_main_page_to_nav_sub_page"
+				app:destination = "@id/nav_sub_page_one" />
+	</fragment>
+
+	<fragment
+			android:id = "@+id/nav_secondary_page"
+			android:name = "com.github.anonisnap.fragmentviewdemo.ui.page_two.SecondaryMainFragment"
+			android:label = "@string/menu_secondary"
+			tools:layout = "@layout/fragment_main_secondary">
+		<action
+				android:id = "@+id/action_nav_secondary_page_to_nav_sub_page_two"
+				app:destination = "@id/nav_sub_page_two" />
+	</fragment>
+
+	<fragment
+			android:id = "@+id/nav_sub_page_one"
+			android:name = "com.github.anonisnap.fragmentviewdemo.ui.sub_page_one.SubPageOneFragment"
+			android:label = "@string/menu_sub_one"
+			tools:layout = "@layout/fragment_sub_page_one" />
+
+	<fragment
+			android:id = "@+id/nav_sub_page_two"
+			android:name = "com.github.anonisnap.fragmentviewdemo.ui.sub_page_two.SubPageTwoFragment"
+			android:label = "@string/menu_sub_one"
+			tools:layout = "@layout/fragment_sub_page_two">
+		<argument
+				android:name = "value"
+				app:argType = "integer"
+				android:defaultValue = "0" />
+	</fragment>
+</navigation>
