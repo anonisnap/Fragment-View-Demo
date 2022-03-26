@@ -1,6 +1,15 @@
 # Fragment-View-Demo
 
 This is an Android Demo Application, using Fragments and a Navigation Controller.
+## Table of Contents
+- [Navigation](#navigation)
+- [Transfering Data with Navigations](#transfering-data-with-navigations)
+    - [Receiving Fragment](#receiving-fragment)
+        - [XML](#xml)
+        - [Java](#java)
+    - [Sending Fragment](#sending-fragment)
+        - [XML](#xml-1)
+        - [Java](#java-1)
 
 ## Navigation
 
@@ -14,7 +23,8 @@ The Navigation was done using the AndroidX NavController. This makes it easy to 
 
 The ability to navigate between different Fragments, and transfer data at the same time proves useful for reusing a Fragment, that may need different data shown.
 
-### Receiving Fragment (The one you are Navigating to)
+### Receiving Fragment 
+*(The one you are Navigating to)*
 
 #### XML
 
@@ -78,7 +88,8 @@ public class SubPageTwoFragment extends Fragment {
 
 *Code taken from [SubPageTwoFragment.java](https://github.com/anonisnap/Fragment-View-Demo/blob/master/app/src/main/java/com/github/anonisnap/fragmentviewdemo/ui/sub_page_two/SubPageTwoFragment.java)*
 
-### Sending Fragment (The one you are Navigating from)
+### Sending Fragment 
+*(The one you are Navigating from)*
 
 #### XML
 
