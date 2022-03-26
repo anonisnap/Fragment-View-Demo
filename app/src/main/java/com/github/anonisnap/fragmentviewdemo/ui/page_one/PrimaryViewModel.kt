@@ -1,23 +1,17 @@
-package com.github.anonisnap.fragmentviewdemo.ui.page_one;
+package com.github.anonisnap.fragmentviewdemo.ui.page_one
 
-import android.app.Application;
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+class PrimaryViewModel(application: Application?) : AndroidViewModel(application!!) {
+    private val mText: MutableLiveData<String?>
+    val text: LiveData<String?>
+        get() = mText
 
-public class PrimaryViewModel extends AndroidViewModel {
-
-	private final MutableLiveData<String> mText;
-
-	public PrimaryViewModel(Application application) {
-		super(application);
-		mText = new MutableLiveData<>();
-		mText.setValue("This is the Primary Main Page");
-	}
-
-	public LiveData<String> getText() {
-		return mText;
-	}
+    init {
+        mText = MutableLiveData()
+        mText.value = "This is the Primary Main Page"
+    }
 }

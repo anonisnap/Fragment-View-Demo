@@ -1,23 +1,17 @@
-package com.github.anonisnap.fragmentviewdemo.ui.sub_page_one;
+package com.github.anonisnap.fragmentviewdemo.ui.sub_page_one
 
-import android.app.Application;
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+class SubPageOneViewModel(application: Application?) : AndroidViewModel(application!!) {
+    private val mText: MutableLiveData<String?>
+    val text: LiveData<String?>
+        get() = mText
 
-public class SubPageOneViewModel extends AndroidViewModel {
-
-	private final MutableLiveData<String> mText;
-
-	public SubPageOneViewModel(Application application) {
-		super(application);
-		mText = new MutableLiveData<>();
-		mText.setValue("This is the First Sub Page");
-	}
-
-	public LiveData<String> getText() {
-		return mText;
-	}
+    init {
+        mText = MutableLiveData()
+        mText.value = "This is the First Sub Page"
+    }
 }

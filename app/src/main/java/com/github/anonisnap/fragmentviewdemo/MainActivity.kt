@@ -1,64 +1,46 @@
-package com.github.anonisnap.fragmentviewdemo;
+package com.github.anonisnap.fragmentviewdemo
 
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
+import android.os.Bundle
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.navigateUp
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.github.anonisnap.fragmentviewdemo.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+class MainActivity : AppCompatActivity() {
+    private var mAppBarConfiguration: AppBarConfiguration? = null
+    private var binding: ActivityMainBinding? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
+        setSupportActionBar(binding!!.appBarMain.toolbar)
+        binding!!.appBarMain.fab.setOnClickListener { view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show() }
+        val drawer = binding!!.drawerLayout
+        val navigationView = binding!!.navView
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = AppBarConfiguration.Builder( // INFO: Add Navigation ID of Pages here, to have them function as "Top layer pages"
+                R.id.nav_main_page,         // Primary Page
+                R.id.nav_secondary_page     // Secondary Page
+        ).setOpenableLayout(drawer).build()
+        val navController = findNavController(this, R.id.nav_host_fragment_content_main)
+        setupActionBarWithNavController(this, navController, mAppBarConfiguration!!)
+        setupWithNavController(navigationView, navController)
+    }
 
-import com.github.anonisnap.fragmentviewdemo.databinding.ActivityMainBinding;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
 
-public class MainActivity extends AppCompatActivity {
-
-	private AppBarConfiguration mAppBarConfiguration;
-	private ActivityMainBinding binding;
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		binding = ActivityMainBinding.inflate(getLayoutInflater());
-		setContentView(binding.getRoot());
-
-		setSupportActionBar(binding.appBarMain.toolbar);
-		binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-			}
-		});
-		DrawerLayout drawer = binding.drawerLayout;
-		NavigationView navigationView = binding.navView;
-		// Passing each menu ID as a set of Ids because each
-		// menu should be considered as top level destinations.
-		mAppBarConfiguration = new AppBarConfiguration.Builder(
-				// INFO: Add Navigation ID of Pages here, to have them function as "Top layer pages"
-				R.id.nav_main_page, // Primary Page
-				R.id.nav_secondary_page // Secondary Page
-		).setOpenableLayout(drawer).build();
-
-		NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-		NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-		NavigationUI.setupWithNavController(navigationView, navController);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onSupportNavigateUp() {
-		NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-		return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
-	}
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(this, R.id.nav_host_fragment_content_main)
+        return navigateUp(navController, mAppBarConfiguration!!) || super.onSupportNavigateUp()
+    }
 }

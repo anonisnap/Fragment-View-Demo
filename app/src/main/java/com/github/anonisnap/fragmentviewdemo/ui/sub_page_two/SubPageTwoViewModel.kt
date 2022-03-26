@@ -1,26 +1,21 @@
-package com.github.anonisnap.fragmentviewdemo.ui.sub_page_two;
+package com.github.anonisnap.fragmentviewdemo.ui.sub_page_two
 
-import android.app.Application;
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
+class SubPageTwoViewModel(application: Application?) : AndroidViewModel(application!!) {
+    private val mText: MutableLiveData<String?>
+    fun showNumberSentFromOtherFragment(number: Int) {
+        mText.value = "This is the Second Sub Page\nYou have typed $number"
+    }
 
-public class SubPageTwoViewModel extends AndroidViewModel {
+    val text: LiveData<String?>
+        get() = mText
 
-	private final MutableLiveData<String> mText;
-
-	public SubPageTwoViewModel(Application application) {
-		super(application);
-		mText = new MutableLiveData<>();
-		mText.setValue("This is the Second Sub Page");
-	}
-
-	public void showNumberSentFromOtherFragment(int number){
-		mText.setValue("This is the Second Sub Page\nYou have typed " + number);
-	}
-
-	public LiveData<String> getText() {
-		return mText;
-	}
+    init {
+        mText = MutableLiveData()
+        mText.value = "This is the Second Sub Page"
+    }
 }
